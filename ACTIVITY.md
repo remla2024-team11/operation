@@ -28,4 +28,7 @@ Created PR: https://github.com/remla2024-team11/model-training/pull/2 <br>Approv
 
 
 -- Rado: --<br>
-
+Created PR:
+1. https://github.com/remla2024-team11/model-service/pull/2
+Approved PR: 
+1. https://github.com/remla2024-team11/model-service/pull/1
