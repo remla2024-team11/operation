@@ -23,6 +23,7 @@ Created PR:
 1. https://github.com/remla2024-team11/model-training/pull/2
 
 -- Maurice: --<br>
+Created PR: https://github.com/remla2024-team11/model-training/pull/2 <br>Approved PR: https://github.com/remla2024-team11/app-frontend/pull/1
 
 
 -- Rado: --<br>
