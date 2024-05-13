@@ -18,7 +18,9 @@ Created PR: https://github.com/arc-arnob/phishing-detection/pull/9 <br>Approved 
 Created PR: 
 1. https://github.com/remla2024-team11/app-service/pull/1
 2. https://github.com/remla2024-team11/app-frontend/pull/1
-<br>Approved PR: https://github.com/remla2024-team11/model-training/pull/2
+
+<br>Approved PR:
+1. https://github.com/remla2024-team11/model-training/pull/2
 
 -- Maurice: --<br>
 
