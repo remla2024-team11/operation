@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phishing-frontend-depl
+  labels:
+    app: phishing-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: phishing-frontend
+  template:
+    metadata:
+      labels:
+        app: phishing-frontend
+    spec:
+      containers:
+        - name: phishing-frontend
+          image: arc007arnob/phishing-app-frontend
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phishing-frontend-serv
+spec:
+  selector:
+    app: phishing-frontend
+  ports:
+    - port: 8080
+      targetPort: 8080
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  defaultBackend:
+    service:
+      name: phishing-frontend-web-serv
+      port:
+        number: 8080

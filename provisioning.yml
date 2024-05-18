@@ -44,6 +44,9 @@
       shell: |
         minikube start --driver=docker --force
 
+    - name: Add Ingress
+      shell: minikube addons enable ingress
+
     - name: Install Helm
       shell: |
         curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
@@ -57,3 +60,9 @@
 
     - name: Update Helm repositories
       command: helm repo update
+
+- hosts: node*
+  become: yes
+  tasks:
+    - name: Apply deployment file
+      command: kubectl apply -f deployment.yml
