@@ -1,0 +1,59 @@
+# provisioning.yml
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 3600
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Install apt-transport-https
+      apt:
+        name: apt-transport-https
+        state: present
+
+    - name: Install curl
+      apt:
+        name: curl
+        state: present
+
+    - name: Install conntrack
+      apt:
+        name: conntrack
+        state: present
+
+    - name: Install Minikube
+      shell: |
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
+        sudo install minikube-linux-arm64 /usr/local/bin/minikube && rm minikube-linux-arm64
+
+    - name: Install kubectl
+      shell: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+        chmod +x kubectl
+        sudo mv kubectl /usr/local/bin/
+
+    - name: Start Minikube
+      shell: |
+        minikube start --driver=docker --force
+
+    - name: Install Helm
+      shell: |
+        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+- hosts: controller
+  become: yes
+  tasks:
+    - name: Add Helm stable repository
+      command: helm repo add stable https://charts.helm.sh/stable
+      ignore_errors: yes
+
+    - name: Update Helm repositories
+      command: helm repo update
