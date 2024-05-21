@@ -85,7 +85,7 @@
     - name: Copy ingress file
       copy:
         src: "{{ playbook_dir }}/ingress.yml"
-        dest: "./deployment.yml"
+        dest: "./ingress.yml"
     - name: Apply Ingress resources
       command: kubectl apply -f ./ingress.yml
     # - name: Apply deployment file
