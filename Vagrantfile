@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "controller" do |controller|
     controller.vm.network "private_network", type: "dhcp"
     controller.vm.provider "virtualbox" do |vb|
-      vb.memory = 1024
+      vb.memory = 4096
       vb.cpus = 1
     end
   end
@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "node#{i}" do |node|
       node.vm.network "private_network", type: "dhcp"
       node.vm.provider "virtualbox" do |vb|
-        vb.memory = 2048
+        vb.memory = 6144
         vb.cpus = 2
       end
     end
