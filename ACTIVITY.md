@@ -30,7 +30,16 @@ Created PR: https://github.com/remla2024-team11/model-training/pull/2 <br>Approv
 
 -- Rado: --<br>
 Created PR:
-1. https://github.com/remla2024-team11/model-service/pull/2
-
-<br>Approved PR: 
+1. https://github.com/remla2024-team11/model-service/pull/2 <br> Approved PR: 
 1. https://github.com/remla2024-team11/model-service/pull/1
+
+# A3
+--Arnob: --<br>
+Created PR:
+1. https://github.com/remla2024-team11/operation/pull/1 <br> Approved PR:
+1. https://github.com/remla2024-team11/operation/pull/2
+
+--Rado: --<br>
+Created PR:
+1. https://github.com/remla2024-team11/operation/pull/2 <br> Approved PR:
+1. https://github.com/remla2024-team11/operation/pull/1
