@@ -64,5 +64,12 @@
 - hosts: node*
   become: yes
   tasks:
+    - name: Copy deployment file to controller
+      copy:
+        src: deployment.yml
+        dest: /home/vagrant/deployment.yml
+
     - name: Apply deployment file
-      command: kubectl apply -f deployment.yml
+      command: kubectl apply -f /home/vagrant/deployment.yml
+      args:
+        chdir: /home/vagrant
