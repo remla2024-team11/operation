@@ -2,6 +2,16 @@
 
 This is the central repository that contains information about running the project.
 
+## Update for A3:
+### Vagrant setup:
+1. Clone the repo and run `vagrant up`, this will provision VMs and install dependencies on them but that's it.
+
+#### TODO:
+1. Get a full team
+2. Fix A1 and A2
+3. Fix A3 
+
+## A2:
 ### Repositories
 
 - [app-frontend](https://github.com/remla2024-team11/app-frontend)
@@ -35,5 +45,3 @@ This is the central repository that contains information about running the proje
 3. Run Docker Compose: `docker-compose up`
 
 
-#### TODO:
-Soon we will be making Docker Registry.
