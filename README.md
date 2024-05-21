@@ -35,5 +35,11 @@ This is the central repository that contains information about running the proje
 3. Run Docker Compose: `docker-compose up`
 
 
+### Vagrant setup:
+1. Clone the repo and run `vagrant up`, this will provision VMs and install dependencies on them but that's it.
+
+
 #### TODO:
-Soon we will be making Docker Registry.
+1. Get a full team
+2. Fix A1 and A2
+3. Fix A3 
