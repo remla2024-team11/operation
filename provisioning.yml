@@ -1,4 +1,3 @@
-# provisioning.yml
 ---
 - hosts: all
   become: yes
@@ -31,12 +30,12 @@
 
     - name: Install Minikube
       shell: |
-        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
-        sudo install minikube-linux-arm64 /usr/local/bin/minikube && rm minikube-linux-arm64
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
     - name: Install kubectl
       shell: |
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         chmod +x kubectl
         sudo mv kubectl /usr/local/bin/
 
@@ -51,6 +50,21 @@
       shell: |
         curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
+    - name: Install Prometheus
+      shell: |
+        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+        helm install prometheus prometheus-community/prometheus
+
+    - name: Install Grafana
+      shell: |
+        helm repo add grafana https://grafana.github.io/helm-charts
+        helm install grafana grafana/grafana
+
+    - name: Install Kubernetes Dashboard
+      shell: |
+        helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+        helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard
+
 - hosts: controller
   become: yes
   tasks:
@@ -64,5 +78,15 @@
 - hosts: node*
   become: yes
   tasks:
-    - name: Apply deployment file
-      command: kubectl apply -f deployment.yml
+    - name: Copy deployment file
+      copy:
+        src: "{{ playbook_dir }}/deployment.yml"
+        dest: "./deployment.yml"
+    - name: Copy ingress file
+      copy:
+        src: "{{ playbook_dir }}/ingress.yml"
+        dest: "./ingress.yml"
+    - name: Apply Ingress resources
+      command: kubectl apply -f ./ingress.yml
+    # - name: Apply deployment file
+    #   command: kubectl apply -f ./deployment.yml
